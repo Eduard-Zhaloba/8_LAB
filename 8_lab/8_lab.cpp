@@ -2,6 +2,7 @@
 #include <array>
 #include <string>
 #include <vector>
+#include <deque>
 ///////////////////////////////////////////////////////////////////////////Перше завдання
 template <typename T, int N>
 void sortArray(std::array<T, N>& arr) {
@@ -78,6 +79,25 @@ void split(std::vector<T>& num, std::vector<T>& evens, std::vector<T>& odds) {
 
 ////////////////////////////////////////////////////////////////////////////////Кінець другого завдання
 
+template <typename T>
+bool palindrome(std::deque<T>& deq) {
+    if (deq.empty()) return true;
+    auto left = deq.begin();
+    auto right = deq.end() - 1;
+    while (left < right) {
+        if (*left != *right){
+            return false;
+        }
+        left++;
+        right--;
+    }
+    return true;
+}
+//////////////////////////////////////////////////////////////////////////Кінець третього завдання
+
+
+
+
 int main() {
     std::array<int, 10> a = { 3, 1, 5, 12, 34, 45, 67, 12, 14, 4};
     std::array<int, 12> b = { 4, 2, 0, 6, 14, 10, 9, 27, 54, 19, 0, 24};
@@ -98,6 +118,16 @@ int main() {
     std::vector<long long>odd2;
     split(numbers2, even2, odd2);
     
-	
+	/////////////////////////////////////////////////////////////////////////
+	std::deque<int> deq1 = { 1,2,3,3,2,1};
+	palindrome(deq1);
+    if (palindrome(deq1)) {
+        std::cout << "/////////////////////////////////////////" << std::endl;
+        std::cout << "The deque is a palindrome." << std::endl;
+    }
+    else {
+        std::cout << "/////////////////////////////////////////" << std::endl;
+        std::cout << "The deque is not a palindrome." << std::endl;
+	}   
     return 0;
 }
